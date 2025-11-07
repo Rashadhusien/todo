@@ -1,9 +1,20 @@
 @import "tailwindcss";
 /* @import "tw-animate-css"; */
 
-@custom-variant dark (&:is(.dark *));
+/* @plugin "@tailwindcss/typography";
+@plugin "tw-animate-css"; */
 
 @theme inline {
+  --color-zinc-50: #f3f4f6;
+  --color-zinc-100: #6c7381;
+  --color-zinc-200: #e5e7eb;
+  --color-zinc-300: #e5e7eb;
+  --color-zinc-400: #e5e7eb;
+  --color-zinc-500: #e5e7eb;
+  --color-zinc-600: #e5e7eb;
+  --color-zinc-700: #e5e7eb;
+  --color-zinc-800: #e5e7eb;
+  --color-zinc-900: #e5e7eb;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -44,14 +55,15 @@
 }
 
 :root {
+  --white-50: var(--color-zinc-100);
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: var(--color-zinc-50);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: #3b82f6;
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -78,40 +90,6 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -120,3 +98,70 @@
     @apply bg-background text-foreground;
   }
 }
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility flex-between {
+  @apply flex justify-between items-center;
+}
+
+@utility flex-start {
+  @apply flex justify-start items-center;
+}
+@utility no-focus {
+  @apply focus-visible:ring-0! focus-visible:ring-transparent! focus-visible:ring-offset-0!;
+}
+
+@utility h1-bold {
+  @apply text-[30px] font-bold leading-[42px] tracking-tighter;
+}
+
+@utility h2-bold {
+  @apply text-[24px] font-bold leading-[31.2px];
+}
+
+@utility h2-semibold {
+  @apply text-[24px] font-semibold leading-[31.2px];
+}
+
+@utility h3-bold {
+  @apply text-[20px] font-bold leading-[26px];
+}
+
+@utility h3-semibold {
+  @apply text-[20px] font-semibold leading-[24.8px];
+}
+
+@utility base-medium {
+  @apply text-[18px] font-medium leading-[25.2px];
+}
+
+@utility base-semibold {
+  @apply text-[18px] font-semibold leading-[25.2px];
+}
+
+@utility base-bold {
+  @apply text-[18px] font-bold leading-[140%];
+}
+
+@utility paragraph-regular {
+  @apply text-[16px] font-normal leading-[22.4px];
+}
+
+@utility paragraph-medium {
+  @apply text-[16px] font-medium leading-[22.4px];
+}
+
+@utility paragraph-semibold {
+  @apply text-[16px] font-semibold leading-[20.8px];
+}
+
+/* @utility light-border {
+  @apply border-light-800;
+} */
+/* 
+@utility light-border-2 {
+  @apply border-light-700;
+} */

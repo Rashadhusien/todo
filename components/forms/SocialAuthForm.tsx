@@ -1,0 +1,63 @@
+"use client";
+import Image from "next/image";
+
+import ROUTES from "@/constants/routes";
+
+import { Button } from "../ui/button";
+import { toast } from "sonner";
+
+const SocialAuthForm = () => {
+  const buttonClass = ` body-medium text-white-50 min-h-12 flex-1 rounded-2 px-4 py-3.5 cursor-pointer`;
+
+  const handleSignIn = async (provider: "github" | "google") => {
+    try {
+      // await signIn(provider, {
+      //   redirectTo: ROUTES.HOME,
+      // });
+    } catch (error) {
+      console.log(error);
+
+      toast.error("Error", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "An error occured during sign-in",
+      });
+    }
+  };
+
+  return (
+    <div className="mt-5 flex flex-wrap gap-2.5 ">
+      {/* <Button
+        variant="ghost"
+        className={buttonClass}
+        onClick={() => handleSignIn("github")}
+      >
+        <Image
+          src={"/icons/github.svg"}
+          alt="github logo"
+          width={20}
+          height={20}
+          className="invert mr-2.5 object-contain "
+        />
+        <span>Log in with GitHub</span>
+      </Button> */}
+      <Button
+        className={buttonClass}
+        variant="ghost"
+        onClick={() => handleSignIn("google")}
+      >
+        <Image
+          src={"/icons/google.svg"}
+          alt="google logo"
+          width={20}
+          height={20}
+          className=" mr-2.5 object-contain"
+        />
+        <span>Continue with Google</span>
+      </Button>
+    </div>
+  );
+};
+
+export default SocialAuthForm;
