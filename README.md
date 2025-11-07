@@ -20,6 +20,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Linting and Formatting
+
+- Run `npm run lint` to check the codebase with ESLint.
+- Run `npm run lint:fix` to automatically resolve simple lint issues.
+- Run `npm run format` to apply Prettier formatting rules across the project.
+- Run `npm run format:check` to verify formatting without applying changes.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
