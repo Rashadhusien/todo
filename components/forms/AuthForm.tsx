@@ -25,15 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/routes";
 import { cn } from "@/lib/utils";
-
-interface ActionResponse {
-  success: boolean;
-  status?: number;
-  error?: {
-    message: string;
-  };
-}
-
+import { ActionResponse } from "@/types/global";
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T, any, any>;
   defaultValues: T;
@@ -55,19 +47,25 @@ const AuthForm = <T extends FieldValues>({
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
     const result = await onSubmit(data);
-
+    console.log(result);
     if (result?.success) {
       toast.success("Success", {
-        description:
-          formType === "SIGN_IN"
-            ? "Signed in successfully"
-            : "Account created successfully",
+        description: isSignIn
+          ? "Signed in successfully"
+          : "Account created successfully",
       });
-      router.push(ROUTES.HOME);
+      if (isSignIn) {
+        router.push(ROUTES.HOME);
+      } else {
+        router.push(ROUTES.VERIFY_EMAIL);
+      }
     } else {
-      toast.error(`Error: ${result?.status}`, {
-        description: result?.error?.message,
-      });
+      toast.error(
+        `${result?.error ? result?.error : "Error"}: ${result?.statusCode}`,
+        {
+          description: result?.message,
+        }
+      );
     }
   };
 

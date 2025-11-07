@@ -4,6 +4,29 @@ import AuthForm from "@/components/forms/AuthForm";
 import { SignInSchema } from "@/lib/validations";
 
 const SignIn = () => {
+  const handleSubmit = async (data: any) => {
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      return result;
+    } catch (error) {
+      console.error("Signup error:", error);
+      return {
+        success: false,
+        error: {
+          message: "Something went wrong. Please try again.",
+        },
+      };
+    }
+  };
   return (
     <AuthForm
       formType="SIGN_IN"
@@ -12,28 +35,7 @@ const SignIn = () => {
         email: "",
         password: "",
       }}
-      onSubmit={async (data) => {
-        try {
-          console.log("Sign in data:", data);
-          // TODO: Replace with actual sign-in logic
-          // const response = await signIn('credentials', { ...data, redirect: false });
-
-          // Mock success response
-          return {
-            success: true,
-            status: 200,
-          };
-        } catch (error) {
-          console.error("Sign in error:", error);
-          return {
-            success: false,
-            status: 500,
-            error: {
-              message: "Failed to sign in. Please try again.",
-            },
-          };
-        }
-      }}
+      onSubmit={handleSubmit}
     />
   );
 };
