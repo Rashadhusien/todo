@@ -110,7 +110,7 @@ const AuthForm = <T extends FieldValues>({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="mt-10 space-y-6 gap-2 grid grid-cols-1 md:grid-cols-2"
+          className="mt-10 space-y-6 gap-2 grid  md:grid-cols-2"
         >
           {/* {buttonText} */}
           {Object.keys(defaultValues).map((fieldName) => (
@@ -120,7 +120,7 @@ const AuthForm = <T extends FieldValues>({
               name={fieldName as Path<T>}
               render={({ field }) => (
                 <FormItem
-                  className={cn("flex w-full flex-col gap-2.5 mb-2 ", {
+                  className={cn("flex w-full flex-col gap-2.5 mb-4 ", {
                     "col-span-2": !fieldName.toLowerCase().includes("name"),
                   })}
                 >
@@ -148,7 +148,7 @@ const AuthForm = <T extends FieldValues>({
           ))}
 
           {isSignIn && (
-            <p className="text-end w-full col-span-2 m-0">
+            <p className="text-end w-full col-span-2 m-2">
               <Link href={ROUTES.FORGET_PASSWORD} className="text-primary  ">
                 Forget Password?
               </Link>
