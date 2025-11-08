@@ -9,7 +9,6 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,28 +25,7 @@ const ForgotPassword = () => {
     },
   });
 
-  const handleSubmit = async (data: { email: string }) => {
-    try {
-      const response = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      console.error("Forgot password error:", error);
-      return {
-        success: false,
-        error: {
-          message: "Something went wrong. Please try again.",
-        },
-      };
-    }
-  };
+  const handleSubmit = async (data: { email: string }) => {};
 
   return (
     <section className="flex-center min-h-screen w-full">

@@ -1,33 +1,10 @@
 "use client";
 
 import AuthForm from "@/components/forms/AuthForm";
+import { SignUpWithCredentials } from "@/lib/actions/auth.action";
 import { SignUpSchema } from "@/lib/validations";
 
 const SignUp = () => {
-  const handleSubmit = async (data: any) => {
-    try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      return result;
-    } catch (error) {
-      console.error("Signup error:", error);
-      return {
-        success: false,
-        error: {
-          message: "Something went wrong. Please try again.",
-        },
-      };
-    }
-  };
-
   return (
     <AuthForm
       formType="SIGN_UP"
@@ -38,7 +15,7 @@ const SignUp = () => {
         email: "",
         password: "",
       }}
-      onSubmit={handleSubmit}
+      onSubmit={SignUpWithCredentials}
     />
   );
 };
